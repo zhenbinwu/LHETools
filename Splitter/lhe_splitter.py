@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-import sys, string, itertools, sre, gzip
+import sys, string, itertools
 
 #from segment_list import segment_list
 from lhe_file import lhe_file 
-from sets import Set
 
 
 class event_getter(object):
@@ -14,7 +13,7 @@ class event_getter(object):
         
         self._lhe_file_list = []
 
-        for i in Set(lhe_file_list): # remove duplicates
+        for i in set(lhe_file_list): # remove duplicates
             self._lhe_file_list.append(lhe_file(i))
 
         self.n_events = 0

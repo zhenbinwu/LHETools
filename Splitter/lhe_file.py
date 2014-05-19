@@ -7,9 +7,17 @@ class lhe_file(object):
 
     def __init__(self, filename, write=False):
 
-        if write:
-            self.lhe_file = open(filename, 'w')
+
+        if ".gz" in filename:
+          import gzip
+          if write:
+            self.lhe_file = gzip.open(filename, 'w')
+          else:
+            self.lhe_file = gzip.open(filename, 'r')
         else:
+          if write:
+            self.lhe_file = open(filename, 'w')
+          else:
             self.lhe_file = open(filename, 'r')
 
         self.header = self._get_header()
